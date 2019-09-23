@@ -41,8 +41,14 @@ class Block {
             // Save in auxiliary variable the current block hash
             let aux = self.hash;  
 
+            //cleanup existing hash
+            self.hash = null;
+
             // Recalculate the hash of the Block
             let rehash = SHA256(JSON.stringify(self)).toString();
+
+            //reset the block's hash
+            self.hash = aux;
 
             // Comparing if the hashes changed
             if (aux != rehash){
