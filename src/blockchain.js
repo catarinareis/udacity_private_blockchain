@@ -192,7 +192,7 @@ class Blockchain {
         let errorLog = [];
         return new Promise(async (resolve, reject) => {
             var previousHash = self.chain[0].hash;
-            self.chain.forEach(function(block){
+            self.chain.forEach(async function(block){
                 if (! await block.validate()){
                     errorLog.push(Error("Not valid"));
                 }
